@@ -11,7 +11,7 @@ const Home = () => {
   return (
     <div className={'bg-slate-100'}>
       <Navbar />
-      <Header />
+      <Header type={undefined} />
       <Collections />
       <Apartments />
       <ContactUs></ContactUs>

@@ -1,50 +1,54 @@
+import useFetch from '../../hooks/useFetch.js';
 import React from 'react';
 
 const callouts = [
   {
-    name: 'Hotels',
-    description: '23123 hotels',
+    name: 'Zagreb',
+    description: 'Zagreb, Croatia’s northwestern capital',
     imageSrc:
-      'https://cf.bstatic.com/xdata/images/hotel/max1024x768/370564672.jpg?k=4f37af06c05a6f5dfc7db5e8e71d2eb66cae6eec36af7a4a4cd7a25d65ceb941&o=&hp=1',
+      'https://www.visit-croatia.co.uk/wp-content/uploads/2017/12/zagreb.jpg',
     imageAlt:
       'Desk with leather desk pad, walnut desk organizer, wireless keyboard and mouse, and porcelain mug.',
     href: '#',
   },
   {
-    name: 'Resorts',
-    description: '1000 resorts',
+    name: 'New York',
+    description:
+      'New York City comprises 5 boroughs sitting where the Hudson River',
     imageSrc:
-      'https://media.cntraveler.com/photos/53da60a46dec627b149e66f4/master/pass/hilton-moorea-lagoon-resort-spa-moorea-french-poly--110160-1.jpg',
+      'https://static01.nyt.com/images/2022/07/28/nyregion/28nytoday-skyline/28nytoday-skyline-superJumbo.jpg',
     imageAlt:
       'Wood table with porcelain mug, leather journal, brass pen, leather key ring, and a houseplant.',
     href: '#',
   },
   {
-    name: 'Cabins',
-    description: '10323200 cabins',
+    name: 'London',
+    description: 'London, the capital of England and the United Kingdom',
     imageSrc:
-      'https://www-vacasa.imgix.net/30217_Morgantown_GA_cabin.jpg?auto=format%2Ccompress&fit=crop&h=1200&ixlib=python-3.2.0&q=45&w=1600&s=0da07cb45cfd3997e683b2e49c1f2ffa',
+      'https://www.telegraph.co.uk/content/dam/Travel/Destinations/Europe/United%20Kingdom/London/london-aerial-thames-guide.jpg?imwidth=680',
     imageAlt: 'Collection of four insulated travel bottles on wooden shelf.',
     href: '#',
   },
   {
-    name: 'Houses',
-    description: '10323200 cabins',
+    name: 'Berlin',
+    description: 'Berlin, Germany’s capital, dates to the 13th century.',
     imageSrc:
-      'https://thumbor.forbes.com/thumbor/fit-in/900x510/https://www.forbes.com/home-improvement/wp-content/uploads/2022/07/download-23.jpg',
+      'https://cdn.britannica.com/49/179449-138-9F4EC401/Overview-Berlin.jpg?w=800&h=450&c=crop',
     imageAlt: 'Collection of four insulated travel bottles on wooden shelf.',
     href: '#',
   },
 ];
 
 const Collections = () => {
+  const { data, loading, error } = useFetch(
+    '/hotels/countByCity?cities=zagreb,new york,london'
+  );
+
   return (
     <div className="bg-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl py-16 sm:py-12 lg:max-w-none lg:py-24">
-          <h2 className="text-2xl font-bold text-gray-900">
-            Browse by property type
-          </h2>
+          <h2 className="text-2xl font-bold text-gray-900">Popular Cities</h2>
 
           <div className="mt-6 space-y-12 lg:grid lg:grid-cols-4 lg:gap-x-6 lg:space-y-0">
             {callouts.map((callout) => (
